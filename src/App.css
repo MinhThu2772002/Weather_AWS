@@ -1,0 +1,104 @@
+body.clear {
+    background-image: url('clear.jpg');
+    background-size: cover;
+}
+
+body.clouds {
+    background-image: url('cloud.jpg');
+    background-size: cover;
+}
+
+body.rain {
+    background-image: url('rain.jpg');
+    background-size: cover;
+}
+
+body.thunderstorm {
+    background-image: url('thunderstorm.png');
+    background-size: cover;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.hero {
+    padding: 0rem 0rem;
+    line-height: 0;
+}
+
+.weather-data-container {
+    padding: 2rem;
+    margin: 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+.weather-data-heading {
+    margin-bottom: 1rem;
+}
+
+.current-weather-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.temperature-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 2rem;
+}
+
+.temperature {
+    font-size: 5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.feels-like {
+    font-size: 1.5rem;
+}
+
+.weather-description-container {
+    display: flex;
+    align-items: center;
+}
+
+.weather-icon {
+    height: 10rem;
+    margin-right: 2rem;
+}
+
+.weather-description {
+    font-size: 2rem;
+}
+
+.additional-info-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.weather-info-container,
+.sun-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.notification {
+    margin-bottom: 1rem;
+}
+
+.weather-info,
+.sun-info {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
