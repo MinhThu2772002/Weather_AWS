@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import "bulma/css/bulma.min.css";
 import "./App.css";
+import axios from "axios";
 const API_GATEWAY_ENDPOINT =
-  "https://yrk7u4wih5.execute-api.eu-north-1.amazonaws.com/dev";
+  "https://r3ijvpedwf.execute-api.eu-north-1.amazonaws.com/dev";
 
 function App() {
   const [location, setLocation] = useState("");
   const [weatherData, setWeatherData] = useState(null);
-
+  const [recentSearches, setRecentSearches] = useState([]);
   const API_KEY = "d9f99186e33699af6278171c51e3d418";
 
   const getWeatherData = async () => {
@@ -35,6 +36,7 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setWeatherData(data);
+        handleSaveWeather(location, data);
         const weatherCondition = data.weather[0].main.toLowerCase();
         document.body.className = weatherCondition;
       });
@@ -51,20 +53,37 @@ function App() {
       hour12: true,
     });
   };
-  const handleSaveWeather = () => {
-    // Call the AWS Lambda function to save the weather search data
-    fetch(API_GATEWAY_ENDPOINT, {
-      method: "POST",
-      body: JSON.stringify({
-        operation: "saveSearchData",
-        location: location,
-        weatherData: weatherData,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
+  const handleSaveWeather = (location, data) => {
+    if (data) {
+      // Call the AWS Lambda function to save the weather search data
+      fetch(API_GATEWAY_ENDPOINT, {
+        method: "POST",
+        body: JSON.stringify({
+          operation: "saveSearchData",
+          location: location,
+          weatherData: data,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.error(error));
+    }
   };
+  const handleGetRecentSearchesClick = async () => {
+    try {
+      const response = await axios.post(
+        "https://r3ijvpedwf.execute-api.eu-north-1.amazonaws.com/dev",
+        {
+          operation: "getRecentSearches",
+        }
+      );
+      setRecentSearches(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div class="App">
       <section class="hero is-primary">
@@ -167,13 +186,41 @@ function App() {
             </div>
           )}{" "}
         </div>{" "}
-        <button
-          class="button is-primary centered"
-          onClick={handleSaveWeather(location, weatherData)}
-        >
-          Save Weather{" "}
-        </button>{" "}
       </section>{" "}
+      <div class="has-text-centered">
+        <button
+          class="button is-primary"
+          onClick={handleGetRecentSearchesClick}
+        >
+          Get Recent Searches{" "}
+        </button>{" "}
+      </div>{" "}
+      {recentSearches.length > 0 && (
+        <div class="recent-searches-container has-text-centered">
+          <h2 class="title is-4"> Recent Searches </h2>{" "}
+          <table class="table is-bordered is-striped is-narrow is-hoverable is-centered">
+            <thead>
+              <tr>
+                <th> Location </th> <th> Date </th>{" "}
+              </tr>{" "}
+            </thead>{" "}
+            <tbody>
+              {" "}
+              {recentSearches.map((search) => (
+                <tr key={search.id}>
+                  <td> {search.location} </td>{" "}
+                  <td>
+                    {" "}
+                    {new Date(
+                      parseInt(search.searchDate)
+                    ).toLocaleString()}{" "}
+                  </td>{" "}
+                </tr>
+              ))}{" "}
+            </tbody>{" "}
+          </table>{" "}
+        </div>
+      )}{" "}
     </div>
   );
 }
