@@ -198,27 +198,41 @@ function App() {
       {recentSearches.length > 0 && (
         <div class="recent-searches-container has-text-centered">
           <h2 class="title is-4"> Recent Searches </h2>{" "}
-          <table class="table is-bordered is-striped is-narrow is-hoverable is-centered">
-            <thead>
-              <tr>
-                <th> Location </th> <th> Date </th>{" "}
-              </tr>{" "}
-            </thead>{" "}
-            <tbody>
-              {" "}
-              {recentSearches.map((search) => (
-                <tr key={search.id}>
-                  <td> {search.location} </td>{" "}
-                  <td>
-                    {" "}
-                    {new Date(
-                      parseInt(search.searchDate)
-                    ).toLocaleString()}{" "}
-                  </td>{" "}
-                </tr>
-              ))}{" "}
-            </tbody>{" "}
-          </table>{" "}
+          <div class="container">
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-centered is-small">
+              <thead>
+                <tr>
+                  <th> Location </th> <th> Date </th>{" "}
+                  <th> Weather Description </th> <th> Temperature(°C) </th>{" "}
+                  <th> Humidity( % ) </th> <th> Wind Speed(m / s) </th>{" "}
+                </tr>{" "}
+              </thead>{" "}
+              <tbody>
+                {" "}
+                {recentSearches.map((search) => (
+                  <tr key={search.id}>
+                    <td> {search.location} </td>{" "}
+                    <td>
+                      {" "}
+                      {new Date(
+                        Date.parse(search.searchDate)
+                      ).toLocaleString()}{" "}
+                    </td>{" "}
+                    {search.weatherData && (
+                      <React.Fragment>
+                        <td> {JSON.parse(search.weatherData).main.temp} </td>{" "}
+                        <td>
+                          {" "}
+                          {JSON.parse(search.weatherData).main.humidity}{" "}
+                        </td>{" "}
+                        <td> {JSON.parse(search.weatherData).wind.speed} </td>{" "}
+                      </React.Fragment>
+                    )}{" "}
+                  </tr>
+                ))}{" "}
+              </tbody>{" "}
+            </table>{" "}
+          </div>{" "}
         </div>
       )}{" "}
     </div>
