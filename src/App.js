@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "bulma/css/bulma.min.css";
 import "./App.css";
+const API_GATEWAY_ENDPOINT =
+  "https://yrk7u4wih5.execute-api.eu-north-1.amazonaws.com/dev";
 
 function App() {
   const [location, setLocation] = useState("");
@@ -49,7 +51,20 @@ function App() {
       hour12: true,
     });
   };
-
+  const handleSaveWeather = () => {
+    // Call the AWS Lambda function to save the weather search data
+    fetch(API_GATEWAY_ENDPOINT, {
+      method: "POST",
+      body: JSON.stringify({
+        operation: "saveSearchData",
+        location: location,
+        weatherData: weatherData,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
+  };
   return (
     <div class="App">
       <section class="hero is-primary">
@@ -152,6 +167,12 @@ function App() {
             </div>
           )}{" "}
         </div>{" "}
+        <button
+          class="button is-primary centered"
+          onClick={handleSaveWeather(location, weatherData)}
+        >
+          Save Weather{" "}
+        </button>{" "}
       </section>{" "}
     </div>
   );
