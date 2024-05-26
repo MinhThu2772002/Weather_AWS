@@ -1,51 +1,46 @@
-# Applied Data Science with Python: IMDB Software for Hollywood Actors and Actresses
+# Introduction to Cloud Computing: Weather Report Application on AWS
 
 ## Summary
 
-Our recent project, undertaken at Ostbayerische Technische Hochschule Regensburg, involved developing a comprehensive software application focused on Hollywood actors and actresses using data science techniques and Python. The goal was to create an intuitive platform to store, retrieve, and display detailed information on the top 50 popular actors and actresses from IMDb, including their filmography, awards, and ratings. The project was guided by Istvan Lengyel and contributed by Nguyễn Quốc Minh Thư.
+In our recent project at Ostbayerische Technische Hochschule Regensburg, we developed a cloud-based weather report application leveraging AWS services. This project aimed to create a user-friendly web interface that allows users to retrieve and display weather data for various locations, using services such as OpenWeatherMap. The project was supervised by Maximilian Schön and contributed by Nguyễn Quốc Minh Thư.
 
 ## Skills and Technologies Used
 
-### Data Science
-- **Data scraping**: Beautiful Soup
-- **Data processing and manipulation**
-- **Data storage and retrieval**: Relational databases
-
-### Programming
-- **Languages**: Python, JavaScript (React.js)
-- **Frameworks**: Django (Backend), React.js (Frontend)
-- **Database**: SQL (PostgreSQL)
+### Cloud Computing
+- **AWS Lambda**: Serverless backend functions
+- **AWS DynamoDB**: NoSQL database management
+- **AWS API Gateway**: Creating and managing APIs
+- **AWS IAM**: Secure access management
 
 ### Web Development
-- **Frontend**: React.js, Bulma library for UI components
-- **Backend**: Django framework
-- **API Development and Testing**: Postman
+- **Frontend**: React.js with Bulma CSS framework
+- **Backend**: Python functions on AWS Lambda
+- **Hosting**: AWS Amplify for static web hosting
 
-### Algorithms and Problem-Solving
-- **Data parsing and extraction algorithms**
-- **Sequence and system modeling diagrams**
-- **Relational data structure design**
+### Data Integration
+- **API Integration**: OpenWeatherMap for real-time weather data retrieval
+- **Data Storage**: AWS DynamoDB for storing and retrieving weather data
 
-### Tools and Libraries
-- **Web scraping**: Requests and Beautiful Soup
-- **Database interactions**: Django ORM
-- **User interfaces**: React.js
+### Additional Features
+- **Voice Recognition**: Optional integration with Alexa for spoken user input
+- **Version Control and Deployment**: Using GitHub and AWS Amplify
 
 ## Project Highlights
 
-- **Core Functionality**: Developed a platform to store, retrieve, and display information on actors and actresses, including filmography, awards, and ratings.
-- **Data Science Techniques**: Utilized data scraping, processing, and storage methods to manage large datasets.
-- **User-Centric Design**: Focused on creating an intuitive and user-friendly interface to enhance user experience.
-- **Web Development**: Implemented a robust backend with Django and an interactive frontend with React.js.
+- **User-friendly Interface**: Developed a simple and intuitive web frontend to input locations and display current and forecasted weather information.
+- **Cloud-based Solution**: Implemented a full-stack architecture using AWS services to ensure scalability, reliability, and security.
+- **Data Storage**: Enabled storage of current and historical weather data in a DynamoDB NoSQL database, allowing users to access previous weather information.
+- **Serverless Architecture**: Utilized AWS Lambda for efficient and scalable backend processing without managing server infrastructure.
 
-This project not only reinforced our technical skills in data science and web development but also highlighted the importance of effective data management and user-centric design. Our software aims to enhance the user experience by providing comprehensive and easily accessible information about Hollywood’s favorite stars.
+This project enhanced our understanding of cloud computing principles, serverless architecture, and full-stack web development. It provided practical experience in integrating various AWS services to build a scalable and reliable cloud-based application.
 
 ## Personal Information
 
 **Name**: Nguyễn Quốc Minh Thư  
 **Role**: Developer
 
-I am excited to apply the knowledge and skills gained from this project to future endeavors in the field of data science and web development.
+I am excited to apply the knowledge and skills gained from this project to future endeavors in the field of cloud computing and web development.
+
 
 # Getting Started with Create React App
 
